@@ -24,7 +24,8 @@
         "psr-4": {
             "App\\": "module/App/src/",
             "Statistics\\": "module/Statistics/src/",
-            "SocialPost\\": "module/SocialPost/src/"
+            "SocialPost\\": "module/SocialPost/src/",
+            "FictionalAuth\\": "module/FictionalAuth/src/"
         },
         "exclude-from-classmap": [
             "tests/"

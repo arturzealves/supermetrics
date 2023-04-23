@@ -4,10 +4,10 @@ namespace Statistics\Calculator\Factory;
 
 use Statistics\Calculator\AbstractCalculator;
 use Statistics\Calculator\AveragePostLength;
+use Statistics\Calculator\AveragePostPerUserPerMonth;
 use Statistics\Calculator\CalculatorComposite;
 use Statistics\Calculator\CalculatorInterface;
 use Statistics\Calculator\MaxPostLength;
-use Statistics\Calculator\NoopCalculator;
 use Statistics\Calculator\TotalPostsPerWeek;
 use Statistics\Dto\ParamsTo;
 use Statistics\Enum\StatsEnum;
@@ -19,12 +19,11 @@ use Statistics\Enum\StatsEnum;
  */
 class StatisticsCalculatorFactory
 {
-
     private const CALCULATOR_CLASS_MAP = [
         StatsEnum::AVERAGE_POST_LENGTH                     => AveragePostLength::class,
         StatsEnum::MAX_POST_LENGTH                         => MaxPostLength::class,
         StatsEnum::TOTAL_POSTS_PER_WEEK                    => TotalPostsPerWeek::class,
-        StatsEnum::AVERAGE_POSTS_NUMBER_PER_USER_PER_MONTH => NoopCalculator::class,
+        StatsEnum::AVERAGE_POSTS_NUMBER_PER_USER_PER_MONTH => AveragePostPerUserPerMonth::class,
     ];
 
     /**

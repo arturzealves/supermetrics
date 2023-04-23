@@ -1,0 +1,14 @@
+Code review:
+
+0. The documentation states that the endpoint accepted method is POST, yet this code is making a GET request, that won't be accepted.
+    You must change it to send a POST request.
+    Consider using a HTTP client like Guzzle or cURL to make the request.
+
+1. You are calling the function `file_get_contents` without checking if there was any error.
+    You should always check if there was any error after calling that function.
+
+2. You are passing credentials in the query string directly.
+Those values should be stored in configuration files or environment variables instead of being hardcoded.
+
+3. The variable `name` is not being encoded. You can use the `urlencode` function to encode it,
+    but the better approach would be to just use the function `http_build_query` to encode all the parameters.
