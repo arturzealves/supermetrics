@@ -1,0 +1,16 @@
+Would you use a class/library provided by an external framework in your code, why or why not?
+
+It depends on the complexity of the feature and how time consuming it is to have the same functionality implemented internally.
+
+If the external library is a well known and widely used library, then it is a good practice to use it because it will save me time
+implementing the needed feature and will most likely be better implemented, more efficient and more secure, because usually these
+libraries are open-source and mantained by a lot of people.
+
+If otherwise the library is not known yet, we still need to consider the pros and cons of using it.
+Using it will bind our project to that dependency and we will adopt all the vulnerabilities that the library has.
+
+When in doubt, the safest thing to do is to not use a suspicious library.
+It is better to read the code, find the parts that we need to implement in our project and write it ourselves.
+
+Another good approach to do this is to fork the code from the needed library and adapt it to our needs, if needed.
+This way we can maintain it ourselves and not be dependent on others, specially if the library is not being mantained regularly.
