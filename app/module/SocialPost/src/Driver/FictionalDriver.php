@@ -2,6 +2,7 @@
 
 namespace SocialPost\Driver;
 
+use FictionalAuth\Service\FictionalAuthService;
 use Psr\SimpleCache\CacheInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use SocialPost\Client\SocialClientInterface;
@@ -36,14 +37,21 @@ class FictionalDriver implements SocialDriverInterface
     private $cache;
 
     /**
+     * @var FictionalAuthService
+     */
+    private $authService;
+
+    /**
      * FictionalSocialApiDriver constructor.
      *
      * @param SocialClientInterface $client
      */
     public function __construct(
-        SocialClientInterface $client
+        SocialClientInterface $client,
+        FictionalAuthService $authService
     ) {
         $this->client = $client;
+        $this->authService = $authService;
     }
 
     /**
@@ -121,11 +129,7 @@ class FictionalDriver implements SocialDriverInterface
      */
     protected function registerToken(): string
     {
-        //Todo: retrieve current user data from  an auth service stub
-        $userData = [
-            'email' => 'your@email.address',
-            'name'  => 'YourName',
-        ];
+        $userData = $this->authService->getCurrentUser();
 
         $response = $this->client->authRequest(self::REGISTER_TOKEN_URI, $userData);
         $response = \GuzzleHttp\json_decode($response, true);

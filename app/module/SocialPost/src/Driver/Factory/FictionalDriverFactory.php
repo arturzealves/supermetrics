@@ -2,6 +2,7 @@
 
 namespace SocialPost\Driver\Factory;
 
+use FictionalAuth\Service\FictionalAuthService;
 use SocialPost\Cache\Factory\CacheFactory;
 use SocialPost\Client\Factory\FictionalClientFactory;
 use SocialPost\Driver\FictionalDriver;
@@ -28,7 +29,8 @@ class FictionalDriverFactory
         }
 
         $client = FictionalClientFactory::create();
-        $driver = new FictionalDriver($client);
+        $authService = new FictionalAuthService();
+        $driver = new FictionalDriver($client, $authService);
         $driver->setCache($cache);
 
         return $driver;
